@@ -24,10 +24,10 @@ const vendingDFA = {
         10000 : "q4",
         20000 : 'q6',
         Vanilla : 'q1',
-        Strawberry : 'q1',
-        Chocolate :'q1',
-        Orange: 'q1',
-        Banana: 'q1'
+        Strawberry : 'q0',
+        Chocolate :'q0',
+        Orange: 'q0',
+        Banana: 'q0'
     },
     q3:{
         5000 : "q4",
@@ -119,6 +119,10 @@ let totalMoney = 0;
 function getNextState(state, input){
     let formerState = currentState;
     let error = 'Rejected, Max Money is 50000';
+    if(numOfToppings>=4){
+        alert("Max Flavor for Current Cream Reached (4)");
+        return;
+    }
     currentState =  vendingDFA[state][input];
     if(currentState == "Reject"){
         currentState = formerState;
