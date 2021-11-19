@@ -172,7 +172,7 @@ function showBoughtToppings(index){
     innerContainer.className = 'container';
     innerContainer.id = "outputs"
     let output = document.createElement('p');
-    output.className = 'text-bold text-white'
+    output.className = 'text-bold text-black'
     output.innerHTML = toppings[index];
     container.appendChild(innerContainer);
     innerContainer.appendChild(output);
@@ -181,7 +181,7 @@ function showBoughtToppings(index){
 function showCurrentMoney(){
     let container = document.getElementById('current-money');
     let currentMoney = document.createElement('p');
-    currentMoney.className = 'text-white';
+    currentMoney.className = 'text-black';
     currentMoney.id = 'money';
     currentMoney.innerHTML = totalMoney;
     container.appendChild(currentMoney);

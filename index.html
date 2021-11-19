@@ -9,30 +9,72 @@
     <title>Vending Maching Using FSA</title>
 </head>
 <body>
-    <div class="parent container d-flex justify-content-center align-items-center h-100" id='login-container'>
-        <div class="container-fluid mt-5 mb-5 bg-success rounded">
-            <div class="mt-5 mb-5 text-white">
-                <div>
-                    <h1>Your Money</h1>
-                    <div id='current-money'>
-                        <p id='money'>0</p>
+    <div class="container d-flex justify-content-center">
+        <div class="content px-5 py-3 m-3">
+            <div class="title d-flex justify-content-center">
+                <h2>Ice Cream Vending Machine</h2>
+            </div>
+            <div class="menu row my-3">
+                <div class="left col bg-white border border-dark border-2 rounded">
+                    <div class="display row py-3">
+                        <div class="menu-item col-4">
+                            <label>Vanilla</label>
+                            <div class="img">
+                                <img src="img/vanilla.png" alt="" height="50px">
+                            </div>
+                            <button onclick="handleInput('Vanilla')" class="btn btn-primary bg-danger m-auto p-1" id="insert2" >Rp 5000</button>
+                        </div>
+                        <div class="menu-item col-4">
+                            <label>Strawberry</label>
+                            <div class="img">
+                                <img src="img/strawberry.png" alt="" height="50px">
+                            </div>
+                            <button onclick="handleInput('Strawberry')" class="btn btn-primary bg-danger m-auto p-1" id="insert2" >Rp 10000</button>
+                        </div>
+                        <div class="menu-item col-4">
+                            <label>Chocolate</label>
+                            <div class="img">
+                                <img src="img/chocolate.png" alt="" height="50px">
+                            </div>
+                            <button onclick="handleInput('Chocolate')" class="btn btn-primary bg-danger m-auto p-1" id="insert2" >Rp 10000</button>
+                        </div>
+                        <div class="menu-item col-4">
+                            <label>Orange</label>
+                            <div class="img">
+                                <img src="img/orange.png" alt="" height="50px">
+                            </div>
+                            <button onclick="handleInput('Orange')" class="btn btn-primary bg-danger m-auto p-1" id="insert2" >Rp 10000</button>
+                        </div>
+                        <div class="menu-item col-4">
+                            <label>Banana</label>
+                            <div class="img">
+                                <img src="img/banana.png" alt="" height="50px">                                
+                            </div>
+                            <button onclick="handleInput('Banana')" class="btn btn-primary bg-danger m-auto p-1" id="insert2" >Rp 10000</button>
+                        </div>
                     </div>
                 </div>
-                <h1>Money Insert</h1>
-                <button onclick="handleInput(5000)" class="btn btn-primary bg-danger" id="insert1"  >Insert Rp. 5000</button>
-                <button onclick="handleInput(10000)" class="btn btn-primary bg-danger" id="insert2" >Insert Rp. 10000</button>
-                <button onclick="handleInput(20000)" class="btn btn-primary bg-danger" id="insert2" >Insert Rp. 20000</button>
-                <h1>Get Your Ice Cream Toppings!</h1>
-                <button onclick="handleInput('Vanilla')" class="btn btn-primary bg-danger" id="insert2" >Vanilla Topping Rp 5000</button>
-                <button onclick="handleInput('Strawberry')" class="btn btn-primary bg-danger" id="insert2" >Strawberry Topping Rp 10000</button>
-                <button onclick="handleInput('Chocolate')" class="btn btn-primary bg-danger" id="insert2" >Chocolate Topping Rp 10000</button>
-                <button onclick="handleInput('Orange')" class="btn btn-primary bg-danger mt-2" id="insert2" >Orange Topping Rp 10000</button>
-                <button onclick="handleInput('Banana')" class="btn btn-primary bg-danger mt-2" id="insert2" >Banana Topping Rp 10000</button>
-                <h1>Your Toppings</h1>
-                <div class="container" id='output-container'>
+                <div class="right col-5">
+                    <div id='current-money'>
+                        <h5>Your Money</h5>
+                        <p id='money'>0</p>
+                    </div>
+                    <div class="money-button">
+                        <h5>Insert your money here:</h5>
+                        <button onclick="handleInput(5000)" class="btn btn-primary bg-danger m-1 p-1" id="insert1"  >Rp. 5000</button>
+                        <button onclick="handleInput(10000)" class="btn btn-primary bg-danger m-1 p-1" id="insert1" >Rp. 10000</button>
+                        <button onclick="handleInput(20000)" class="btn btn-primary bg-danger m-1 p-1" id="insert1" >Rp. 20000</button>
+                    </div>
                 </div>
-                <div class="container">
-                    <button onclick="takeOutToppings()" class="btn btn-primary bg-danger">Take Out</button>
+            </div>
+            <div class="take-out row">
+                <h5>Your Toppings</h5>
+                <div class="col border border-dark border-2 rounded">
+                    <div id='output-container'>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <button onclick="takeOutToppings()" class="btn btn-primary bg-danger m-auto p-1">Take Out</button>
                 </div>
             </div>
         </div>
