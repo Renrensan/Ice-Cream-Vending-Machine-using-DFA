@@ -82,6 +82,7 @@ const vendingDFA = {
     q8:{
         5000 : "q9",
         10000 : "q10",
+        20000 :"Reject",
         Vanilla : 'q7',
         Strawberry : 'q6',
         Chocolate :'q6',
@@ -90,6 +91,8 @@ const vendingDFA = {
     },
     q9:{
         5000 : "q10",
+        10000 : 'Reject',
+        20000 : 'Reject',
         Vanilla : 'q8',
         Strawberry : 'q7',
         Chocolate :'q7',
@@ -97,6 +100,9 @@ const vendingDFA = {
         Banana: 'q7'
     },
     q10:{
+        5000 : "Reject",
+        10000 : 'Reject',
+        20000 : 'Reject',
         Vanilla : 'q9',
         Strawberry : 'q8',
         Chocolate :'q8',
@@ -106,15 +112,24 @@ const vendingDFA = {
     startState : 'q0'
 }
 const toppings = ['Vanilla', 'Strawberry','Chocolate','Orange','Banana'];
-currentState = vendingDFA.startState;
+let currentState = vendingDFA.startState;
 let numOfToppings = 0;
-const maxMoneyLimit =  50000;
 let totalMoney = 0;
 
 function getNextState(state, input){
     let formerState = currentState;
+    let error = 'Rejected, Max Money is 50000';
     currentState =  vendingDFA[state][input];
-
+    if(currentState == "Reject"){
+        currentState = formerState;
+        alert(error);
+        return;
+    }
+    if(input === 5000 || input === 10000 || input === 20000){
+        totalMoney+=input;
+        // if limit reached cannot input more money
+    }
+    
     // Show Output in Screen if Valid
     if(nextStateCheck(currentState,formerState)){
         if(input == toppings[0]){
@@ -130,7 +145,9 @@ function getNextState(state, input){
             }
         }
 
-    };
+    }
+    console.log(currentState);
+    console.log(totalMoney);
 }
 
 function nextStateCheck(currentState,formerState){
@@ -143,21 +160,10 @@ function nextStateCheck(currentState,formerState){
 
 function handleInput(amount){
     let input = amount;
-    let error = 'Rejected, Max Money is 50000'
-    if(input === 5000 || input === 10000 || input === 20000&& totalMoney<maxMoneyLimit){
-        totalMoney+=amount;
-        // if limit reached cannot input more money
-        if(totalMoney>maxMoneyLimit){
-            totalMoney -= amount;
-            alert(error);
-            return;
-        }
-    }
     getNextState(currentState,input)
     removeCurrentMoney();
     showCurrentMoney();
-    console.log(currentState);
-    console.log(totalMoney);
+
 }
 
 function showBoughtToppings(index){
